@@ -1,0 +1,26 @@
+// form style
+
+.base-input {
+    max-width: 500px;
+}
+
+.drop-down-select {
+    width: auto;
+    max-height: 50px;
+    select {
+        padding: $padding-s;
+        border-radius: $radius-m;
+        border: 0;
+        text-align: center;
+        background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20448%20512%22%3E%3C!--!%20Font%20Awesome%20Pro%206.3.0%20by%20%40fontawesome%20-%20https%3A%2F%2Ffontawesome.com%20License%20-%20https%3A%2F%2Ffontawesome.com%2Flicense%20(Commercial%20License)%20Copyright%202023%20Fonticons%2C%20Inc.%20--%3E%3Cpath%20d%3D%22M384%20480c35.3%200%2064-28.7%2064-64l0-320c0-35.3-28.7-64-64-64L64%2032C28.7%2032%200%2060.7%200%2096L0%20416c0%2035.3%2028.7%2064%2064%2064l320%200zM224%20352c-6.7%200-13-2.8-17.6-7.7l-104-112c-6.5-7-8.2-17.2-4.4-25.9s12.5-14.4%2022-14.4l208%200c9.5%200%2018.2%205.7%2022%2014.4s2.1%2018.9-4.4%2025.9l-104%20112c-4.5%204.9-10.9%207.7-17.6%207.7z%22%2F%3E%3C%2Fsvg%3E") no-repeat right;
+        background-position-x: 98%;
+        background-size: 15px;
+        width: 100%;
+    }
+    &.dark {
+        select {
+            background-color: $color-background-dark;
+            color: $color-white;
+        }
+    }
+}

@@ -1,0 +1,1 @@
+<!-- deve avere dentro uno slot ad esempio per internizzare una img -->

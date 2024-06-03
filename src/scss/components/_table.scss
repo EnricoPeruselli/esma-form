@@ -1,0 +1,116 @@
+.the-big-ja-table {
+    position: relative;
+    .card {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        svg {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    .table-title-col {
+        color: $text-grey;
+        font-size: $title-table;
+        text-transform: capitalize;
+        font-weight: $font-weight-semi-bold;
+    }
+    th {
+        .table-item-wrapper {
+            display: flex;
+            align-items: center;
+            gap: $small-gap;
+            .table-item {
+                font-size: $font-size-m;
+                font-weight: $font-weight-semi-bold;
+            }
+            svg {
+                margin: 0 2px;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .table-item-details {
+        font-size: $font-size-s;
+        .title {
+            font-weight: $font-weight-bold;
+        }
+        .data {
+            margin-right: $margin-s;
+        }
+    }
+}
+.the-big-ja-pagination {
+    flex-wrap: wrap;
+    .page-number {
+        display: flex;
+        margin: $margin-s;
+        padding: $padding-s;
+        width: 20px;
+        border: 1px solid $color-border;
+        border-radius: 50%;
+        height: 20px;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+            cursor: pointer;
+        }
+        &.active {
+            background-color: $active-background;
+        }
+        &.disabled {
+            cursor: none;
+            pointer-events: none;
+        }
+    }
+    .pagination-icon {
+        margin: 0 $margin-s;
+        &:hover {
+            cursor: pointer;
+        }
+        &.disabled {
+            cursor: none;
+            pointer-events: none;
+            opacity: 0;
+        }
+    }
+}
+
+.overview {
+    .the-big-ja-table {
+        .wrapper-ranking {
+            .table-item {
+                display: flex;
+                padding: $padding-s;
+                width: 20px;
+                border-radius: 50%;
+                height: 20px;
+                align-items: center;
+                justify-content: center;
+                &.firstValues {
+                    background-color: $color-ranking;
+                }
+            }
+        }
+        .wrapper-expenses {
+            .table-item {
+                color: $waiting-text;
+            }
+        }
+        .wrapper-ytd {
+            .table-item {
+                &.positive {
+                    color: $positive-text;
+                }
+                &.negative {
+                    color: $negative-text;
+                }
+            }
+        }
+    }
+}

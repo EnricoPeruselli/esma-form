@@ -1,0 +1,47 @@
+// button style
+
+.btn {
+    font-size: $font-size-button;
+    font-weight: $font-weight-light;
+    border-radius: $radius-m;
+    transition: $base-transition-time linear;
+    padding: 10px;
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.button-primary {
+    background-color: $color-primary;
+    border: none;
+    color: $color-white;
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+    }
+}
+
+.button-secondary {
+    background-color: $color-secondary;
+    border: none;
+    color: $color-white;
+    &:hover {
+        background-color: $color-secondary;
+        color: $color-white;
+    }
+}
+
+.button-outline {
+    border: 1px solid $color-primary;
+    color: $color-primary;
+    &:hover {
+        border: 1px solid $color-primary;
+        color: $color-primary;
+    }
+}
+
+.button-link {
+    background-color: none;
+    color: $color-primary;
+    text-decoration: none;
+}

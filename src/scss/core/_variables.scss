@@ -1,0 +1,105 @@
+// view size
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$mobile-small: 320px;
+
+
+$size-app-max-width: 800px;
+$size-mobile-breakpoint: 700px;
+
+// media query
+$tablet: 768px;
+
+$grid-1: 5px;
+$grid-2: 10px;
+$grid-3: 15px;
+$grid-4: 20px;
+$grid-5: 25px;
+$grid-6: 30px;
+$grid-7: 35px;
+$grid-8: 40px;
+$grid-9: 45px;
+$grid-10: 50px;
+$grid-20: 100px;
+$grid-40: 200px;
+
+$box-shadow-standard:  0 1px 6px 0 rgba(34, 35, 38, 0.18);
+
+$color-primary: #217EFD;
+$color-secondary: #99B2C6;
+$color-white: #fff;
+$color-balck: #000;
+$color-transparent: 'transparent';
+$color-header: #363635;
+$color-border: #D9E1E7;
+$color-background: #F5F5F5;
+$color-background-dark: #384455;
+
+$text-grey: #8990A1;
+$active-background: #D9E1E7;
+$disable-background: rgba(217, 225, 231, 0.4);
+$color-ranking: #B9F2E0;
+$waiting-text: #E0A621;
+$positive-text: #1AD598;
+$negative-text: #EA3A3D;
+// $color-danger: #dc3545;
+// $color-danger-highlight: #c82333;
+
+$border-width: 1px;
+$border-radius: .25rem;
+
+// SPACE
+
+$margin-s: 10px;
+$margin-m: 20px;
+$margin-l: 40px;
+$margin-xl: 60px;
+
+
+$padding-s: 10px;
+$padding-sm: 15px;
+$padding-m: 20px;
+$padding-l: 40px;
+$padding-xl: 60px;
+
+
+// FONT
+
+$h1: 32px;
+$h2: 28px;
+$h3: 22px;
+$h4: 22px;
+$h5: 20px;
+$title-table: 16px;
+$p: 14px;
+$caption: 12px;
+$size-header: 18px;
+
+$font-weight-bold: 700;
+$font-weight-semi-bold: 500;
+$font-weight-light: 200;
+$font-size-s: 12px;
+$font-size-m: 14px;
+$font-size-ml: 18px;
+$font-size-l: 22px;
+$font-size-button: 14px;
+
+
+$transition: .15s ease-in-out;
+
+
+// design
+
+$radius-m: 8px;
+$base-transition-time: 0.2s;
+
+// Image size
+
+$size-logo: 35px;
+$size-small: 150px;
+$size-medium: 300px;
+$size-big: 500px;
+
+// flex gap
+$small-gap: 5px;

@@ -1,0 +1,34 @@
+.base-list {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.menu-item {
+    font-size: $font-size-ml;
+    font-weight: $font-weight-semi-bold;
+    color: $color-balck;
+}
+.list-tabs {
+    @media screen and (min-width: $tablet) {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
+        margin: $margin-s 0;
+    }
+    .list-tabs-item {
+        padding: $padding-m;
+        border-radius: $radius-m;
+        border: 0;
+        margin: $margin-s 0;
+        text-align: center;
+        width: 100%;
+        max-width: 200px;
+        &.active {
+            background-color: $color-background;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
