@@ -2,7 +2,6 @@
 // CONDIVISIONE PACCHETTI -  qui bisogna importare ed esportare i componenti da condividere nei progetti figli
 // Importo bootstrap in modo da generare un file minimizzato con tutte le classi
 import TheForm from "./components/TheForm.vue";
-import TheHeader from "./components/template/TheHeader.vue";
 import BaseError from "./components/form/BaseError.vue";
 import BaseInput from "./components/form/BaseInput.vue";
 import BaseButton from "./components/ui/BaseButton.vue";
@@ -15,8 +14,6 @@ import BaseTitle from "./components/ui/BaseTitle.vue";
 import SwitchButton from "./components/ui/SwitchButton.vue";
 import ListTabs from "./components/ui/ListTabs.vue";
 import BaseLoader from "./components/ui/BaseLoader.vue";
-import IsinSearch from "./components/table/IsinSearch.vue";
-import Table from "./components/table/Table.vue";
 import DropDownSelect from "./components/ui/DropDownSelect.vue";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -34,7 +31,6 @@ import 'bootstrap/dist/js/bootstrap.js'
 export default {
     install: (app, options) => {
         app.component('TheForm', TheForm);
-        app.component('TheHeader', TheHeader);
         app.component('BaseError', BaseError);
         app.component('BaseInput', BaseInput);
         app.component('BaseButton', BaseButton);
@@ -44,8 +40,6 @@ export default {
         app.component('BaseText', BaseText);
         app.component('BaseTitle', BaseTitle);
         app.component('SwitchButton', SwitchButton);
-        app.component('TheTable', Table);
-        app.component('IsinSearch', IsinSearch);
         app.component('ListTabs', ListTabs);
         app.component('BaseLoader', BaseLoader);
         app.component('DropDownSelect', DropDownSelect);

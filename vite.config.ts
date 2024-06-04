@@ -36,13 +36,13 @@ export default defineConfig({
 
             // the exposed global variable
             // is required when formats includes 'umd' or 'iife'
-            name: 'TheBigJa',
+            name: 'EsmaForm',
 
             // the proper extensions will be added, ie:
             // name.js (es module)
             // name.umd.cjs) (common js module)
             // default fileName is the name option of package.json
-            fileName: 'the-big-ja'
+            fileName: 'esma-form'
         },
         rollupOptions: {
 

@@ -51,7 +51,7 @@ const deleteItemfromVifActivator = (value) => {
 
 // SET emit
 
-const emit = defineEmits(['setModel'])
+const emit = defineEmits(['setModel', 'sendData'])
 
 // SET funzioni per salvare i dati
 
@@ -131,11 +131,10 @@ const sendData = async () => {
     const result = await v$.value.$validate();
     if (result) {
         validate.value = true
-        alert('succes')
+        emit('sendData', vModel)
         // inserire funzione STORE, le diverse funzioni gestirle nello store e non qui
     } else {
         validate.value = false
-        alert('nope')
     }
 }
 
@@ -178,7 +177,5 @@ const sendData = async () => {
     >
       Invia
     </button>
-    {{ vModel }}
-    {{ vIfActivator }}
   </section>
 </template>

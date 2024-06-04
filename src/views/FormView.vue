@@ -189,6 +189,10 @@ const setModel = (object) => {
     console.log(childModel.value.select === 'selectaltro')
 }
 
+const sendData = (object) => {
+    console.log(object)
+}
+
 // IMPORTANTE
 
 // alcuni campi potrebbero essere nascosti di defautl e mostrati solo in caso di active di altri input. 
@@ -224,6 +228,7 @@ const formRules = {
       :form-data="formData"
       :form-rules="formRules"
       @set-model="setModel"
+      @sendData="sendData"
     />
   </main>
 </template>

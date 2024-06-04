@@ -135,28 +135,12 @@ const inputRadio =  {
 <template>
   <section class="container-fluid bg-white">
     <BaseTitle>
-      The Big Ja - nice serene
+      Esma Form - nice serene
     </BaseTitle>
 
     <BaseText>
       The project is a components framework based on vue.js (v3) and bootstrap
     </BaseText>
-
-    <BaseTitle>
-      How to install project: <code>yarn add @internal/the-big-ja</code>
-    </BaseTitle>
-    
-    <BaseText>
-      Inside the project open <code>main.js</code> and copy this command:
-      <code>import 'project'</code>
-    </BaseText>
-    
-    <BaseText>
-      Also in <code>main.js</code> add every components that you would like to use:
-      <code>import 'componente'</code>
-    </BaseText>
-
-   
 
     <BaseTitle>
       Form

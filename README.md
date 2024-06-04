@@ -1,94 +1,410 @@
-# The Big Ja
+# Esma Form
 
-This template should help get you started developing with Vue 3 in Vite.
+esma-form is a library for creating forms in Vue. The library allows you to create anything from simple forms to complex forms with conditional inputs and dynamic validations.
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Installation
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+Install the library using npm:
 
 ```sh
-npm install
+npm i esma-form
 ```
 
-### Compile and Hot-Reload for Development
+## Basic Usage
+
+Import style and component in main.js file 
 
 ```sh
-npm run dev
+import '../node_modules/esma-form/dist/style.css'
+
+import TheForm from '../node_modules/esma-form/dist/esma-form.mjs'
+
+app.use(TheForm)
 ```
 
-### Type-Check, Compile and Minify for Production
+Then inside the component/page
 
 ```sh
-npm run build
+<TheForm :form-data="formData" :form-rules="formRules"/>
 ```
 
-### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
+You need to pass a JSON object to configure the form inputs. Here is an example of a basic input configuration:
 
 ```sh
-npm run test:unit:dev # or `npm run test:unit` for headless testing
+dataInput: [
+  {
+    type: 'text',
+    name: 'text',
+    value: '',
+    title: 'Text',
+    placeholder: 'placeholder',
+    notice: 'notice',
+    class: 'group',
+    show: true,
+  },
+]
 ```
+## Input Configuration
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+- type: The type of input (e.g., text, checkbox, select).
+- name: The name attribute of the input.
+- title: The label for the input.
+- placeholder: The placeholder text for the input.
+- notice: A note that will appear below the input.
+- class: Optional CSS class for the input.
+- show: Determines whether the input is displayed. Useful for conditional inputs.
+
+## Form Submission
+
+To handle form submission, you can trigger the sendData function which will pass the populated v-model by default.
 
 ```sh
-npm run test:e2e:dev
+<template>
+  <TheForm @sendData="sendData" />
+</template>
+
+<script>
+export default {
+  methods: {
+    sendData(data) {
+      console.log(data);
+    }
+  }
+}
+</script>
+
+# vue 3 
+
+<script setup>
+const sendData = (data) => {
+    console.log(data)
+}
+</script>
 ```
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
+# Conditional Inputs
+## Checkbox Example
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+Conditional input configuration requires an activeValue that matches the name of the controlling input.
 
 ```sh
-npm run build
-npm run test:e2e
+{
+  type: 'checkbox',
+  name: 'checkbox',
+  value: 'test',
+  class: 'checkbox',
+  title: 'Checkbox',
+  placeholder: 'placeholder',
+  show: true,
+}
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+Conditional input based on checkbox being checked:
 
 ```sh
-npm run lint
+{
+  type: 'text',
+  name: 'text2',
+  value: '',
+  title: 'Text2',
+  placeholder: 'placeholder2',
+  notice: 'notice2',
+  class: 'group',
+  activeValue: 'checkbox',
+  show: false,
+}
 ```
 
-### Configurazione repository yarn su macchina locale
-
-Nel file `.npmrc` alla home utente (`~/.npmrc`) inserire la seguente configurazione:
+Radio or Select Example
 
 ```sh
-@internal:registry=https://euclidea-347233190161.d.codeartifact.eu-central-1.amazonaws.com/npm/internal/
-//euclidea-347233190161.d.codeartifact.eu-central-1.amazonaws.com/npm/internal/:_authToken=${CODEARTIFACT_YARN_TOKEN}
-
-registry=https://registry.npmjs.org/
-//registry.npmjs.org/:_authToken=dummy
+{
+  type: 'select',
+  label: 'Select',
+  name: 'select',
+  activator: 'selectaltro',
+  class: 'check',
+  show: true,
+  options: [
+    {
+      value: 'uno'
+    },
+    {
+      value: 'due'
+    },
+    {
+      value: 'selectaltro'
+    },
+  ]
+}
 ```
 
-Nel file `.zshrc` alla home utente (`~/.zshrc`) inserire la seguente riga:
+Conditional input based on select option:
 
-```zsh
-export CODEARTIFACT_YARN_TOKEN=dummy
+```sh
+{
+  type: 'text',
+  name: 'text6',
+  value: '',
+  title: 'Text6',
+  placeholder: 'placeholder9',
+  notice: 'notice9',
+  class: 'group',
+  activeValue: 'selectaltro',
+  show: false,
+}
 ```
 
-Per pubblicare il seguente pacchetto nel repository interno privato, dalla root del progetto lanciare lo script `yarn_repo.sh` con il comando `source script/yarn_repo.sh`, installare i pacchetti tramite il comando `yarn`, effettuare la build tramite `vite build` e infine eseguire il comando `npm publish`, avendo cura di monitorare la versione del pacchetto all'interno del file `package.json`.
+# Validation Management
 
-Per installare un pacchetto dal repository interno, anteporre il nome del repository `@internal/` al nome del pacchetto. Esempio: `@internal/sticazzi` con `sticazzi` nome del pacchetto.
+Validation is based on Vuelidate and is fully integrated.
 
-Per eliminare la versione corrente del pacchetto, lanciare il comando `delete_pkg_version.sh` con il comando `source script/delete_pkg_version.sh`.
+To enable validation, create a validation object where the key matches the name of the input. For example:
 
-Tutorial per condivisione componenti https://www.youtube.com/watch?v=5QV9wVc8c7g
+```sh
+{
+  type: 'file',
+  name: 'file',
+  label: 'Scegli file',
+  id: 'id',
+  show: true,
+}
+```
+
+Validation configuration:
+
+```sh
+file: { required },
+```
+
+Remember to add in your page/component the validation that you need to use
+
+```sh
+import {required, helpers, minLength} from '@vuelidate/validators'
+```
+
+
+For all validation rules, both conditional and general, refer to the Vuelidate documentation:
+
+[Vuelidate Documentation](https://vuelidate.js.org/)
+
+# Example Usage
+
+Here is an example of how to use esma-form in your Vue component:
+
+```sh
+
+
+<template>
+  <div>
+    <TheForm :formData="formInputs" :formRules="formRules" @sendData="handleFormSubmit" />
+  </div>
+</template>
+
+<script>
+import { required } from '@vuelidate/validators';
+
+export default {
+  data() {
+    return {
+      formRules = {
+         text: {
+            required: helpers.withMessage('Valore obbligatorio', required),
+            minLength: helpers.withMessage('Minimo 4 caratteri', minLength(4))
+         },
+         // email: {required, email},
+         password: {required},
+         radio: {required},
+         checkbox: {required},
+         select: {required},
+         file: {required},
+
+         checkbox2: {required},
+         text6: {
+            required: requiredIf(() => childModel.value.select === 'selectaltro'),
+         }
+      }
+      dataInput: [
+         {
+            type: 'text',
+            name: 'text',
+            value: '',
+            title: 'Text',
+            placeholder: 'placeholder',
+            notice: 'notice',
+            class: "group",
+            show: true,
+         },
+         {
+            type: 'email',
+            name: 'email',
+            value: '',
+            title: 'Email',
+            placeholder: 'placeholder@email.com',
+            notice: 'notice',
+            class: 'group',
+            show: true,
+         },
+         {
+            type: 'email',
+            name: 'email2',
+            value: '',
+            title: 'Email2',
+            placeholder: 'placeholder@email.com',
+            notice: 'notice',
+            class: 'group',
+            show: true,
+         },
+         {
+            type: 'password',
+            name: 'password',
+            value: '',
+            title: 'Password',
+            placeholder: 'placeholder',
+            notice: 'notice',
+            class: 'group',
+            show: true,
+         },
+         {
+            type: 'radio',
+            label: 'radio',
+            name: 'radio',
+            title: 'input radio',
+            class: 'check',
+            activator: 'altro',
+            show: true,
+            options: [
+               {
+                  value: 'uno',
+                  type: 'radio',
+                  name: 'radio',
+                  class: 'check',
+                  title: 'Radio',
+               },
+               {
+                  value: 'due',
+                  type: 'radio',
+                  name: 'radio',
+                  class: 'check',
+                  title: 'Radio',
+               },
+               {
+                  value: 'altro',
+                  type: 'radio',
+                  name: 'radio',
+                  class: 'check',
+                  title: 'Altro',
+               },
+            ]
+         },
+         {
+            type: 'text',
+            name: 'text5',
+            value: '',
+            title: 'Text5',
+            placeholder: 'placeholder3',
+            notice: 'notice3',
+            class: "group",
+            activeValue: 'altro',
+            show: false,
+         },
+         {
+            type: 'checkbox',
+            name: 'checkbox4',
+            value: 'test',
+            class: 'checkbox',
+            title: 'Checkbox 4',
+            placeholder: 'placeholder',
+            show: true,
+         },
+         {
+            type: 'checkbox',
+            name: 'checkbox',
+            value: 'test',
+            class: 'checkbox',
+            title: 'Checkbox',
+            placeholder: 'placeholder',
+            show: true,
+         },
+         {
+            type: 'text',
+            name: 'text2',
+            value: '',
+            title: 'Text2',
+            placeholder: 'placeholder2',
+            notice: 'notice2',
+            class: "group",
+            activeValue: 'checkbox',
+            show: false,
+         },
+         {
+            type: 'checkbox',
+            name: 'checkbox2',
+            value: 'test',
+            class: 'checkbox',
+            title: 'Checkbox2',
+            placeholder: 'placeholder',
+            show: true,
+         },
+         {
+            type: 'text',
+            name: 'text3',
+            value: '',
+            title: 'Text3',
+            placeholder: 'placeholder3',
+            notice: 'notice3',
+            class: "group",
+            activeValue: 'checkbox2',
+            show: false,
+         },
+         {
+            type: 'select',
+            label: 'Select',
+            name: 'select',
+            activator: 'selectaltro',
+            class: 'check',
+            show: true,
+            options: [
+               {
+                  value: 'uno'
+               },
+               {
+                  value: 'due'
+               },
+               {
+                  value: 'selectaltro'
+               },
+            ]
+         },
+         {
+            type: 'text',
+            name: 'text6',
+            value: '',
+            title: 'Text6',
+            placeholder: 'placeholder9',
+            notice: 'notice9',
+            class: "group",
+            activeValue: 'selectaltro',
+            show: false,
+         },
+         {
+            type: 'file',
+            name: 'file',
+            label: 'Scegli file',
+            id: 'id',
+            show: true,
+         },
+      ],
+      }
+    };
+  },
+  methods: {
+    handleFormSubmit(data) {
+      console.log(data);
+    },
+  },
+};
+</script>
+
+```
